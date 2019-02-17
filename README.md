@@ -1,0 +1,2 @@
+# shortcuts
+A shortcuts program
