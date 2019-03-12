@@ -1,10 +1,12 @@
-import pyautogui,time,keyboard
+import pyautogui,time,keyboard, cv2
+from PIL import Image
+from PIL import ImageGrab
+from pyscreeze import ImageNotFoundException
 
 def arrow():
     #Para APA()
-    pyautogui.hotkey("down")
-    pyautogui.hotkey("down")
-    pyautogui.hotkey("down")
+    for y in range(0, 3):
+        pyautogui.hotkey("down")
 def APA():
     print("Alt + Z ---> Formato APA")
     #Formato APA
@@ -51,25 +53,39 @@ def mousep():
     x = pyautogui.position()
     print(x)
 def phisics():
-    print("Alt + T ---> Phisic Work")
+    print("Alt + F ---> Physic Work")
     time.sleep(1)
     pyautogui.press("win")
     pyautogui.typewrite("SERWAY 7ma. Ed. VOL 2")
-    pyautogui.press("enter")
-    time.sleep(1)
+    try:
+        s_cortana = pyautogui.locateOnScreen(r"C:\Users\Miguel Ant. Linares\Documents\Project S\part_screen\physic\book.jpg")
+        pyautogui.press("enter")
+        time.sleep(1)
+    except ImageNotFoundException:
+            print("El libro no se encuentra...")
     pyautogui.press("win")
     pyautogui.typewrite("Raymond Serway, John Jewett - Physics for Scientists")
-    pyautogui.press("enter")
-def vb():
-    time.sleep(1)
-    pyautogui.hotkey("win", "6")
-    time.sleep(2)
-    pyautogui.press("alt")
-    pyautogui.press("right")
-    for x in range (1,8):
-        pyautogui.press("down")
-    for y in range (0, 2):
+    try:
+        s_cortana = pyautogui.locateCenterOnScreen(r"C:\Users\Miguel Ant. Linares\Documents\Project S\part_screen\physic\solution.jpg")
         pyautogui.press("enter")
+    except ImageNotFoundException:
+            print("No se encontró el Solucionario...")
+def vb():    
+    print("Alt + V ---> VirtualBox")
+    try:
+        s_desktop = pyautogui.locateOnScreen(r"C:\Users\Miguel Ant. Linares\Documents\Project S\part_screen\vb\icon.jpg", grayscale = True, confidence = .7)
+        time.sleep(1)
+        pyautogui.hotkey("win", "6")
+        time.sleep(2)
+    except ImageNotFoundException as imgne:
+            print(imgne)
+            print("No se pudo econtrar el ícono en la pantalla")
+    try:
+        s_vb1 = pyautogui.locateOnScreen(r"C:\Users\Miguel Ant. Linares\Documents\Project S\part_screen\vb\xub.jpg", grayscale = True, confidence= .7)
+        s_vb2x, s_vb2y = pyautogui.locateCenterOnScreen(r"C:\Users\Miguel Ant. Linares\Documents\Project S\part_screen\vb\start.jpg", grayscale = True, confidence= .7)
+        pyautogui.click(s_vb2x, s_vb2y, button= "right")
+    except ImageNotFoundException:
+        print("Imagenes no encontradas en la pantalla") 
 keyboard.add_hotkey('alt + z', lambda: APA())
 keyboard.add_hotkey('alt + w', lambda: study())
 keyboard.add_hotkey('alt + p', lambda: mousep())
