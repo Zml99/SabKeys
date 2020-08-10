@@ -58,7 +58,7 @@ def phisics():
     pyautogui.press("win")
     pyautogui.typewrite("SERWAY 7ma. Ed. VOL 2")
     try:
-        s_cortana = pyautogui.locateOnScreen(r"C:\Users\Miguel Ant. Linares\Documents\Project S\part_screen\physic\book.jpg")
+        s_cortana = pyautogui.locateOnScreen(r"<<Path to image>>")
         pyautogui.press("enter")
         time.sleep(1)
     except ImageNotFoundException:
@@ -66,14 +66,14 @@ def phisics():
     pyautogui.press("win")
     pyautogui.typewrite("Raymond Serway, John Jewett - Physics for Scientists")
     try:
-        s_cortana = pyautogui.locateCenterOnScreen(r"C:\Users\Miguel Ant. Linares\Documents\Project S\part_screen\physic\solution.jpg")
+        s_cortana = pyautogui.locateCenterOnScreen(r"<<Path to image>>")
         pyautogui.press("enter")
     except ImageNotFoundException:
             print("No se encontró el Solucionario...")
 def vb():    
     print("Alt + V ---> VirtualBox")
     try:
-        s_desktop = pyautogui.locateOnScreen(r"C:\Users\Miguel Ant. Linares\Documents\Project S\part_screen\vb\icon.jpg", grayscale = True, confidence = .7)
+        s_desktop = pyautogui.locateOnScreen(r"<<Path to image>>", grayscale = True, confidence = .7)
         time.sleep(1)
         pyautogui.hotkey("win", "6")
         time.sleep(2)
@@ -81,8 +81,8 @@ def vb():
             print(imgne)
             print("No se pudo econtrar el ícono en la pantalla")
     try:
-        s_vb1 = pyautogui.locateOnScreen(r"C:\Users\Miguel Ant. Linares\Documents\Project S\part_screen\vb\xub.jpg", grayscale = True, confidence= .7)
-        s_vb2x, s_vb2y = pyautogui.locateCenterOnScreen(r"C:\Users\Miguel Ant. Linares\Documents\Project S\part_screen\vb\start.jpg", grayscale = True, confidence= .7)
+        s_vb1 = pyautogui.locateOnScreen(r"<<Path to image>>", grayscale = True, confidence= .7)
+        s_vb2x, s_vb2y = pyautogui.locateCenterOnScreen(r"<<Path to image>>", grayscale = True, confidence= .7)
         pyautogui.click(s_vb2x, s_vb2y, button= "right")
     except ImageNotFoundException:
         print("Imagenes no encontradas en la pantalla") 
